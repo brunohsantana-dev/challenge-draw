@@ -448,3 +448,111 @@ button:focus-visible {
   line-height: 1.5;
   text-align: center;
 }
+
+/* Remove o visual geral de botão ao redor da miniatura. */
+#ampliar-referencia {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  min-height: 0;
+
+  margin: 0 auto 20px;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transform: none;
+  cursor: zoom-in;
+}
+
+/* O espaço abaixo agora pertence ao botão que envolve a imagem. */
+#ampliar-referencia #imagem-desafio {
+  margin: 0;
+}
+
+/* Mantém o botão escondido quando não há referência disponível. */
+#ampliar-referencia[hidden] {
+  display: none;
+}
+
+/* Limita a janela ao espaço disponível na tela. */
+#modal-imagem {
+  position: fixed;
+  margin: auto;
+
+  width: calc(100% - 24px);
+  max-width: 1100px;
+  max-height: 90vh;
+  padding: 16px;
+  overflow-y: auto;
+
+  color: var(--texto);
+  background: var(--painel);
+  border: 1px solid var(--roxo);
+  border-radius: 16px;
+}
+
+/* Limita a largura da janela e mantém distância das bordas da tela. */
+#modal-imagem {
+  position: fixed;
+  margin: auto;
+
+  width: calc(100% - 32px);
+  max-width: 800px;
+  max-height: 90vh;
+  max-height: 90dvh;
+  padding: 16px;
+  overflow-y: auto;
+
+  color: var(--texto);
+  background: var(--painel);
+  border: 1px solid var(--roxo);
+  border-radius: 16px;
+}
+
+/* O botão permanece acima da imagem, sem precisar ficar fixo. */
+#fechar-imagem {
+  display: block;
+  position: static;
+
+  width: auto;
+  min-height: 44px;
+  margin: 0 0 12px auto;
+  padding: 10px 16px;
+
+  color: var(--texto);
+  background: var(--campo);
+  border: 1px solid var(--roxo);
+  box-shadow: none;
+  transform: none;
+}
+
+/* Ajusta a referência à largura e à altura disponíveis, sem cortar. */
+#imagem-ampliada {
+  display: block;
+
+  width: auto;
+  height: auto;
+  max-width: 100%;
+
+  /* Reserva espaço para o botão, preenchimento e bordas da janela. */
+  max-height: calc(90vh - 110px);
+  max-height: calc(90dvh - 110px);
+
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Mantém o conteúdo rolável, mas esconde a barra do modal do desafio. */
+#resultado {
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+/* Complementa a ocultação nos navegadores que usam este seletor. */
+#resultado::-webkit-scrollbar {
+  display: none;
+}
+

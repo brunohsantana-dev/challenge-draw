@@ -79,7 +79,13 @@
                 &times;
             </button>
 
-            <img id="imagem-desafio" alt="" hidden>
+
+
+            <!-- Envolve a miniatura em um botão para permitir a ampliação. -->
+            <button type="button" id="ampliar-referencia" aria-label="Ampliar imagem de referência">
+                <img id="imagem-desafio" alt="" hidden>
+            </button>
+
 
             <h2 id="nome-desafio">Seu desafio</h2>
 
@@ -93,6 +99,17 @@
             </button>
 
         </dialog>
+
+        <!-- Modal separado para visualizar a referência em tamanho maior. -->
+        <dialog id="modal-imagem" aria-label="Referência visual ampliada">
+            <button type="button" id="fechar-imagem" autofocus>
+                Fechar imagem ×
+            </button>
+
+            <!-- O JavaScript copia a imagem e sua descrição para cá. -->
+            <img id="imagem-ampliada" alt="">
+        </dialog>
+
     </main>
 
 </body>

@@ -26,6 +26,12 @@ const mensagemSemConcluidos = document.querySelector(
 const somentePendentes = document.querySelector("#somente-pendentes");
 const avisoSorteio = document.querySelector("#aviso-sorteio");
 
+// Elementos responsáveis pela ampliação da referência.
+const botaoAmpliar = document.querySelector("#ampliar-referencia");
+const modalImagem = document.querySelector("#modal-imagem");
+const imagemAmpliada = document.querySelector("#imagem-ampliada");
+const botaoFecharImagem = document.querySelector("#fechar-imagem");
+
 // Cada objeto reúne as informações de um desafio.
 const desafios = [
 
@@ -34,6 +40,9 @@ const desafios = [
         dificuldade: "moleza",
         descricao:
             "Crie uma página com sua foto, uma apresentação e links para suas redes.",
+        imagem: "./assets/links-pessoais.png",
+        imagemAlt:
+            "Página de links pessoais com avatar e quatro links sobre um fundo neon",
         requisitos: [
             "Adicionar uma foto ou um avatar com texto alternativo.",
             "Exibir seu nome e uma breve apresentação.",
@@ -62,6 +71,9 @@ const desafios = [
         dificuldade: "moleza",
         descricao:
             "Monte um portfólio com apresentação, habilidades e cards de projetos.",
+        imagem: "./assets/miniportfolio.png",
+        imagemAlt:
+            "Portfólio com apresentação do desenvolvedor e três cards de projetos",
         requisitos: [
             "Criar uma apresentação com seu nome e área de interesse.",
             "Adicionar uma seção sobre você e suas habilidades.",
@@ -75,6 +87,9 @@ const desafios = [
         dificuldade: "moleza",
         descricao:
             "Organize um cardápio com categorias, imagens, nomes e preços.",
+        imagem: "./assets/cardapio-digital.png",
+        imagemAlt:
+            "Cardápio com categorias de lanches e bebidas, fotos e preços",
         requisitos: [
             "Mostrar o nome e uma breve apresentação do estabelecimento.",
             "Organizar os produtos em pelo menos duas categorias.",
@@ -88,6 +103,9 @@ const desafios = [
         dificuldade: "desafio",
         descricao:
             "Converta um valor de reais para outra moeda usando uma cotação fixa.",
+        imagem: "./assets/conversor-moedas.png",
+        imagemAlt:
+            "Conversor com valor em reais, seleção de moeda e resultado em dólar",
         requisitos: [
             "Criar um campo para informar o valor em reais.",
             "Permitir escolher entre dólar e euro.",
@@ -101,6 +119,9 @@ const desafios = [
         dificuldade: "desafio",
         descricao:
             "Sorteie um número inteiro entre um mínimo e um máximo informados.",
+        imagem: "./assets/sorteador-numeros.png",
+        imagemAlt:
+            "Sorteador com campos mínimo e máximo e resultado em destaque",
         requisitos: [
             "Criar campos para os valores mínimo e máximo.",
             "Validar se os dois campos contêm números inteiros.",
@@ -114,6 +135,9 @@ const desafios = [
         dificuldade: "desafio",
         descricao:
             "Mostre perguntas com alternativas e calcule a pontuação do jogador.",
+        imagem: "./assets/quiz-programacao.png",
+        imagemAlt:
+            "Quiz de programação com quatro alternativas e indicação de resposta correta",
         requisitos: [
             "Cadastrar pelo menos cinco perguntas em um array de objetos.",
             "Mostrar uma pergunta por vez com suas alternativas.",
@@ -127,6 +151,9 @@ const desafios = [
         dificuldade: "desafio",
         descricao:
             "Permita escolher produtos e atualize o valor total do pedido na tela.",
+        imagem: "./assets/montador-pedido.png",
+        imagemAlt:
+            "Montador de pedido com quatro produtos e resumo dos itens selecionados",
         requisitos: [
             "Cadastrar pelo menos quatro produtos com nome e preço.",
             "Exibir os produtos disponíveis para adicionar ao pedido.",
@@ -361,6 +388,9 @@ botaoSortear.addEventListener("click", function () {
     nomeDesafio.textContent = desafioSorteado.nome;
     descricaoDesafio.textContent = desafioSorteado.descricao;
 
+    // Evita deixar um botão vazio nos desafios sem imagem.
+    botaoAmpliar.hidden = !desafioSorteado.imagem;
+
     // Mostra a imagem apenas quando o desafio possui uma referência.
     if (desafioSorteado.imagem) {
         imagemDesafio.src = desafioSorteado.imagem;
@@ -395,6 +425,25 @@ botaoSortear.addEventListener("click", function () {
     resultado.classList.remove("animar-resultado");
     void resultado.offsetWidth;
     resultado.classList.add("animar-resultado");
+});
+
+botaoAmpliar.addEventListener("click", function () {
+    // Só abre a ampliação quando existe uma referência visível.
+    if (imagemDesafio.hidden) {
+        return;
+    }
+
+    // Copia a referência atual e seu texto alternativo.
+    imagemAmpliada.src = imagemDesafio.src;
+    imagemAmpliada.alt = imagemDesafio.alt;
+
+    // Abre por cima do modal do desafio.
+    modalImagem.showModal();
+});
+
+botaoFecharImagem.addEventListener("click", function () {
+    // Fecha apenas a imagem; o desafio continua aberto.
+    modalImagem.close();
 });
 
 // Mostra o progresso inicial após todas as listas seadrem criadas.
