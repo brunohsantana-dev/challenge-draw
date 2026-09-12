@@ -34,9 +34,43 @@
                 <option value="desafio">Desafio — com JavaScript</option>
             </select>
 
+            <!-- Quando marcada, esta opção exclui os desafios concluídos do sorteio. -->
+            <label id="opcao-pendentes">
+                <input type="checkbox" id="somente-pendentes">
+                Sortear apenas desafios pendentes
+            </label>
+
             <button type="button" id="botao-sortear">
                 Sortear desafio
             </button>
+
+            <!-- Exibe avisos do sorteio sem abrir o modal. -->
+            <p id="aviso-sorteio" role="status" hidden></p>
+
+            <!-- Anuncia a atualização do progresso também para leitores de tela. -->
+            <p id="progresso" aria-live="polite">
+                0 desafios concluídos
+            </p>
+
+            <!-- Permite abrir e recolher a lista sem precisar de outro evento. -->
+            <details id="painel-concluidos">
+                <summary>Ver desafios concluídos</summary>
+
+                <!-- O JavaScript vai preencher esta lista. -->
+                <ul id="lista-concluidos"></ul>
+
+                <!-- Aparece somente enquanto a lista estiver vazia. -->
+                <p id="mensagem-sem-concluidos">
+                    Seus desafios concluídos vão aparecer aqui.
+                </p>
+
+                <!-- Permite apagar as conclusões e começar novamente. -->
+                <button type="button" id="reiniciar-progresso">
+                    Reiniciar progresso
+                </button>
+
+            </details>
+
         </div>
 
         <!-- Esse conteudo sera substituido quando acontecer o sorteio -->
@@ -53,6 +87,11 @@
             <h3 id="titulo-requisitos" hidden>O que construir</h3>
 
             <ul id="requisitos-desafio"></ul>
+
+            <button type="button" id="concluir-desafio">
+                Marcar como concluído
+            </button>
+
         </dialog>
     </main>
 

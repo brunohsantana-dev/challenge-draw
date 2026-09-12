@@ -326,3 +326,125 @@ button:focus-visible {
     animation: none;
   }
 }
+
+#concluir-desafio:disabled {
+  color: var(--ciano);
+  background: var(--campo);
+  border: 1px solid var(--ciano);
+
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+#progresso {
+  margin-top: 28px;
+
+  color: var(--ciano);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Separa a lista do contador e mantém o tema neon. */
+#painel-concluidos {
+  margin-top: 20px;
+  padding: 16px;
+
+  background-color: var(--campo);
+  border: 1px solid var(--roxo);
+  border-radius: 12px;
+}
+
+/* O título funciona como controle para abrir e fechar a lista. */
+#painel-concluidos summary {
+  color: var(--ciano);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Destaca o controle durante a navegação pelo teclado. */
+#painel-concluidos summary:focus-visible {
+  outline: 2px solid var(--ciano);
+  outline-offset: 4px;
+}
+
+/* Organiza os nomes dos projetos concluídos. */
+#lista-concluidos {
+  margin-top: 14px;
+  padding-left: 22px;
+
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+#lista-concluidos li {
+  margin-bottom: 8px;
+}
+
+/* Dá aos marcadores a cor de destaque do projeto. */
+#lista-concluidos li::marker {
+  color: var(--rosa);
+}
+
+/* Orientação exibida quando ainda não existem conclusões. */
+#mensagem-sem-concluidos {
+  margin-top: 14px;
+
+  color: var(--texto-secundario);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Deixa a ação de reiniciar menos chamativa que o sorteio. */
+#reiniciar-progresso {
+  color: var(--texto-secundario);
+  background: transparent;
+  border: 1px solid var(--roxo);
+  box-shadow: none;
+}
+
+/* Indica que não há progresso disponível para apagar. */
+#reiniciar-progresso:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Organiza a caixa de seleção ao lado do texto. */
+#opcao-pendentes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 20px;
+  margin-bottom: 0;
+
+  color: var(--texto-secundario);
+  font-size: 0.95rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* Mantém a caixa visível e com a cor do tema. */
+#somente-pendentes {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+
+  accent-color: var(--rosa);
+}
+
+/* Destaca a seleção para quem navega com Tab. */
+#somente-pendentes:focus-visible {
+  outline: 2px solid var(--ciano);
+  outline-offset: 4px;
+}
+
+/* Aviso mostrado quando não existem opções para sortear. */
+#aviso-sorteio {
+  margin-top: 16px;
+
+  color: var(--laranja);
+  line-height: 1.5;
+  text-align: center;
+}
