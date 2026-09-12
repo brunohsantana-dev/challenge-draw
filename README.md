@@ -1,52 +1,81 @@
 # Bora Codar 🎲
 
+Um sorteador de desafios para transformar a dúvida “o que vou construir?” em um próximo projeto.
+
+A coding challenge picker that turns “what should I build?” into your next project.
+
+https://brunohsantana-dev.github.io/challenge-draw/
+
 [Português](#portugues) · [English](#english)
 
 <a id="portugues"></a>
 
-## 🇧🇷 Português
+## 🇧🇷 Sobre o projeto
 
-Sorteador de desafios de programação para praticar HTML, CSS e JavaScript. Escolha uma dificuldade, sorteie um projeto e use a ideia como ponto de partida para estudar.
+Bora Codar é um projeto de estudo desenvolvido com HTML, CSS e JavaScript puro.
 
-O visual segue uma temática neon inspirada em vaporwave, com gradientes, cores vibrantes e a fonte Oxanium.
+A proposta é ajudar quem está aprendendo programação a escolher um projeto para praticar. Cada desafio apresenta uma descrição, requisitos e uma referência visual que pode ser ampliada.
 
-### Funcionalidades
+A interface utiliza uma estética neon inspirada em vaporwave, com gradientes e a fonte Oxanium.
 
-- Seleção de dificuldade.
-- Sorteio sem repetição consecutiva.
-- Resultado em uma janela modal com animação.
-- Exibição de imagem e requisitos quando cadastrados.
-- Fechamento pelo botão × ou pela tecla Esc.
-- Layout adaptável a telas menores.
-- Respeito à preferência de redução de movimento do dispositivo.
+## Funcionalidades
 
-### Desafios disponíveis
+- Oito desafios divididos entre duas dificuldades.
+- Sorteio sem repetição consecutiva quando há mais de uma opção disponível.
+- Filtro para sortear apenas desafios pendentes.
+- Aviso quando não existem desafios disponíveis no filtro escolhido.
+- Resultado em um modal com animação.
+- Referências visuais clicáveis, com ampliação em outro modal.
+- Requisitos específicos para cada projeto.
+- Marcação e desmarcação de desafios concluídos.
+- Contador e lista de conclusões.
+- Progresso salvo no navegador com `localStorage`.
+- Reinício do progresso com confirmação.
+- Layout responsivo, navegação por teclado e respeito à preferência de movimento reduzido.
+
+## Desafios disponíveis
 
 | Moleza — HTML e CSS | Desafio — com JavaScript |
 |---|---|
-| Página de links pessoais | Conversor de moedas com cotação fixa |
+| Página de links pessoais | Conversor de moedas |
 | Landing page de cafeteria | Sorteador de números |
 | Miniportfólio | Quiz de programação |
 | Cardápio digital | Montador de pedido |
 
-### Tecnologias
+## Tecnologias
 
 - HTML5
 - CSS3
-- JavaScript puro
+- JavaScript
 - Google Fonts — Oxanium
+- Git e GitHub
 
-Sem frameworks, bibliotecas ou instalação de dependências.
+Sem frameworks ou bibliotecas de JavaScript.
 
-### Como executar
+## Como usar
+
+1. Escolha uma dificuldade.
+2. Se desejar, marque a opção de sortear apenas desafios pendentes.
+3. Clique em **Sortear desafio**.
+4. Leia os requisitos e clique na imagem para ampliar a referência.
+5. Desenvolva o projeto e marque o desafio como concluído.
+6. Acompanhe suas conclusões abaixo do contador.
+
+É possível desfazer uma conclusão ou reiniciar todo o progresso.
+
+A conclusão é registrada manualmente pelo usuário. O aplicativo não analisa nem avalia o código dos projetos desenvolvidos.
+
+## Executar localmente
 
 1. Baixe ou clone este repositório.
-2. Abra o arquivo `index.html` no navegador.
-3. Escolha uma dificuldade e clique em **Sortear desafio**.
+2. Abra a pasta no VS Code.
+3. Inicie o `index.html` usando a extensão Live Server.
 
-A fonte Oxanium é carregada pela internet. Caso não esteja disponível, a página utiliza uma fonte alternativa.
+Não é necessário instalar dependências do projeto.
 
-### Estrutura do projeto
+A fonte Oxanium depende de conexão com a internet. Caso não carregue, a interface utiliza uma fonte alternativa.
+
+## Estrutura
 
 ```text
 ├── index.html
@@ -54,149 +83,170 @@ A fonte Oxanium é carregada pela internet. Caso não esteja disponível, a pág
 ├── script.js
 ├── README.md
 └── assets/
-    └── cafeteria.png
+    ├── cafeteria.png
+    ├── links-pessoais.png
+    ├── miniportfolio.png
+    ├── cardapio-digital.png
+    ├── conversor-moedas.png
+    ├── sorteador-numeros.png
+    ├── quiz-programacao.png
+    └── montador-pedido.png
 ```
 
-### Como funciona
+## Como funciona
 
-Os desafios ficam em um array de objetos. Cada objeto contém nome, dificuldade e descrição, além de imagem e requisitos opcionais.
+Os desafios são armazenados em um array de objetos com nome, dificuldade, descrição, requisitos e caminho da imagem.
 
-Ao clicar em sortear:
+O sorteio utiliza `filter()` para selecionar as opções elegíveis e `Math.random()` com `Math.floor()` para escolher um resultado.
 
-1. O JavaScript lê a dificuldade escolhida.
-2. `filter()` seleciona os desafios dessa dificuldade e exclui o último resultado.
-3. `Math.random()` e `Math.floor()` escolhem uma posição da lista.
-4. O desafio selecionado atualiza o conteúdo da página.
-5. `showModal()` abre a janela com o resultado.
+Quando existe apenas uma opção disponível, ela pode ser sorteada novamente. Quando não existe nenhuma, a interface apresenta um aviso.
 
-O último desafio fica guardado em uma variável. Ao recarregar a página, essa memória é reiniciada.
+O resultado atualiza elementos do DOM e é exibido com o método `showModal()` do elemento nativo `<dialog>`.
 
-### Aprendizados praticados
+As conclusões ficam em um array, convertido em JSON para armazenamento no `localStorage`.
 
-- Estrutura semântica com HTML.
-- Gradientes, animações e responsividade com CSS.
-- Manipulação do DOM e eventos de clique.
+## Sobre o progresso salvo
+
+- Os dados permanecem no mesmo navegador e endereço do site.
+- Não há conta, servidor de dados ou sincronização entre dispositivos.
+- Limpar os dados do site ou confirmar o reinício remove o progresso.
+- Se o armazenamento estiver indisponível, o aplicativo permite continuar usando o progresso durante a sessão.
+
+## Aprendizados
+
+- HTML semântico e formulários.
+- CSS responsivo, gradientes e animações.
+- Manipulação do DOM e eventos.
 - Arrays, objetos e condições.
-- Métodos `filter()` e `forEach()`.
+- Funções e organização de responsabilidades.
+- Métodos `filter()`, `forEach()`, `includes()`, `indexOf()` e `splice()`.
 - Criação de elementos com `createElement()`.
-- Uso do elemento nativo `<dialog>`.
+- Modais com `<dialog>`.
+- Persistência com `localStorage` e JSON.
+- Tratamento de falhas com `try/catch`.
 
-### Estado atual
+## Desenvolvimento e referências
 
-O sorteador possui oito desafios, divididos igualmente entre as duas dificuldades.
+Projeto desenvolvido por Bruno, passo a passo, durante seus estudos no DevClub, com apoio de IA para explicações, revisão de trechos e geração das referências visuais.
 
-A cafeteria é o primeiro desafio com imagem e requisitos cadastrados. A imagem foi gerada com IA como referência visual e não representa um site funcional.
+As imagens são exemplos de layout. Elas não representam aplicações funcionais nem obrigam a reprodução exata do design.
 
-A interface da aplicação está em português. Este README está disponível em português e inglês.
-
-### Próximas melhorias
-
-- [ ] Adicionar requisitos aos demais desafios.
-- [ ] Criar imagens de referência para os outros projetos.
-- [ ] Permitir marcar desafios como concluídos.
-- [ ] Salvar o progresso no navegador.
-
-### Sobre
-
-Projeto de estudo desenvolvido passo a passo para praticar os conteúdos aprendidos no DevClub, com a intenção de participar do concurso de projetos.
-
-As implementações dos projetos sorteados não estão incluídas neste repositório. Cada desafio é uma proposta para desenvolver uma nova aplicação.
+Os projetos sugeridos pelo sorteador devem ser desenvolvidos separadamente e não estão implementados neste repositório.
 
 ---
 
 <a id="english"></a>
 
-## 🇺🇸 English
+## 🇺🇸 About
 
-A coding challenge picker for practicing HTML, CSS, and JavaScript. Choose a difficulty, draw a project, and use the idea as a starting point for learning.
+Bora Codar is a learning project built with HTML, CSS, and vanilla JavaScript.
 
-The interface features a vaporwave-inspired neon theme with gradients, vibrant colors, and the Oxanium font.
+It helps programming learners choose a project to practice. Each challenge includes a description, requirements, and an expandable visual reference.
 
-### Features
+The interface features a vaporwave-inspired neon theme, gradients, and the Oxanium font.
 
-- Difficulty selection.
-- Random challenges without consecutive repeats.
-- Results displayed in an animated modal.
-- Reference images and requirements displayed when available.
-- Close the modal using the × button or the Esc key.
-- Responsive layout for smaller screens.
-- Support for the device’s reduced-motion preference.
+The application interface is in Portuguese.
 
-### Available challenges
+## Features
+
+- Eight challenges across two difficulty levels.
+- No consecutive repeats when more than one option is available.
+- Filter for pending challenges only.
+- Feedback when no challenges match the selected filter.
+- Animated result modal.
+- Clickable visual references displayed in a larger modal.
+- Project-specific requirements.
+- Mark challenges as completed or undo completion.
+- Completion counter and list.
+- Progress stored in the browser using `localStorage`.
+- Progress reset with confirmation.
+- Responsive layout, keyboard navigation, and reduced-motion support.
+
+## Available challenges
 
 | Moleza (Easy) — HTML & CSS | Desafio (Intermediate) — with JavaScript |
 |---|---|
-| Personal links page | Currency converter with a fixed exchange rate |
+| Personal links page | Currency converter |
 | Coffee shop landing page | Random number generator |
 | Mini portfolio | Programming quiz |
 | Digital menu | Order builder |
 
-### Technologies
+## Technologies
 
 - HTML5
 - CSS3
-- Vanilla JavaScript
+- JavaScript
 - Google Fonts — Oxanium
+- Git and GitHub
 
-No frameworks, libraries, or dependency installation required.
+No JavaScript frameworks or libraries.
 
-### Getting started
+## How to use
+
+1. Select a difficulty.
+2. Optionally enable the pending-only filter.
+3. Click **Sortear desafio** to draw a challenge.
+4. Read the requirements and click the image to enlarge it.
+5. Build the project and mark the challenge as completed.
+6. View your completed challenges below the progress counter.
+
+You can undo a completion or reset all progress.
+
+Completion is recorded manually by the user. The application does not inspect or evaluate the code of completed projects.
+
+## Run locally
 
 1. Download or clone this repository.
-2. Open `index.html` in your browser.
-3. Choose a difficulty and click **Sortear desafio** (Draw a challenge).
+2. Open the folder in VS Code.
+3. Launch `index.html` using the Live Server extension.
 
-Oxanium loads through an internet connection. If unavailable, the page uses a fallback font.
+No project dependencies need to be installed.
 
-### Project structure
+Oxanium requires an internet connection. A fallback font is used if it cannot load.
 
-```text
-├── index.html
-├── style.css
-├── script.js
-├── README.md
-└── assets/
-    └── cafeteria.png
-```
+## Project structure
 
-### How it works
+The project contains `index.html`, `style.css`, `script.js`, and an `assets` folder with eight reference images. The complete file tree is shown in the Portuguese section above.
 
-Challenges are stored in an array of objects. Each object contains a name, difficulty, and description, plus an optional image and requirements.
+## How it works
 
-When the draw button is clicked:
+Challenges are stored in an array of objects containing a name, difficulty, description, requirements, and image path.
 
-1. JavaScript reads the selected difficulty.
-2. `filter()` selects matching challenges and excludes the previous result.
-3. `Math.random()` and `Math.floor()` select an index from the list.
-4. The selected challenge updates the page content.
-5. `showModal()` opens the result dialog.
+The picker uses `filter()` to select eligible challenges and `Math.random()` with `Math.floor()` to choose a result.
 
-The previous challenge is stored in a variable. Reloading the page resets this memory.
+If only one option remains, it can be drawn again. If none remain, the interface displays a message.
 
-### Learning topics
+The result updates DOM elements and opens through the native `<dialog>` element’s `showModal()` method.
 
-- Semantic HTML.
-- CSS gradients, animations, and responsive layouts.
-- DOM manipulation and click events.
-- Arrays, objects, and conditional statements.
-- The `filter()` and `forEach()` methods.
-- Creating elements with `createElement()`.
-- Using the native `<dialog>` element.
+Completed challenge names are stored in an array and serialized as JSON for `localStorage`.
 
-### Current status
+## Saved progress
 
-The picker includes eight challenges, evenly divided between the two difficulty levels.
+- Data stays in the same browser and site origin.
+- There are no accounts, backend data services, or cross-device synchronization.
+- Clearing site data or confirming a reset removes progress.
+- If storage is unavailable, the application can still track progress during the current session.
 
-The coffee shop challenge is the first to include a reference image and requirements. Its image was generated with AI as a visual reference and does not represent a working website.
+## Learning topics
 
-The application interface is in Portuguese. This README is available in Portuguese and English.
+- Semantic HTML and forms.
+- Responsive CSS, gradients, and animations.
+- DOM manipulation and events.
+- Arrays, objects, and conditional logic.
+- Functions and separation of responsibilities.
+- `filter()`, `forEach()`, `includes()`, `indexOf()`, and `splice()`.
+- Element creation with `createElement()`.
+- Native `<dialog>` modals.
+- Persistence with `localStorage` and JSON.
+- Error handling with `try/catch`.
 
-### Planned improvements
+## Development and references
 
-- [ ] Add requirements to the remaining challenges.
-- [ ] Create reference images for the other projects.
-- [ ] Allow challenges to be marked as completed.
-- [ ] Save progress in the browser.
+Built by Bruno step by step while studying at DevClub, with AI assistance for explanations, code review, and visual reference generation.
+
+The images are layout examples, not working applications or mandatory designs to reproduce exactly.
+
+The projects suggested by the picker are intended to be built separately and are not implemented in this repository.
 
 ### About
 
