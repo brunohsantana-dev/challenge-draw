@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./script.js" defer></script> <!-- defer faz com que o script seja carregado depois do html-->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+
+
+    <title>Bora Codar — Sorteador de desafios</title>
+
+</head>
+
+<body>
+
+    <main>
+        <header>
+            <h1>Bora Codar</h1>
+            <p>Seu próximo projeto começa com um sorteio. Boa sorte!</p>
+        </header>
+
+        <!-- A dificuldade escolhida sera usada pelo JS -->
+        <div>
+            <label for="dificuldade">Escolha a dificuldade</label>
+
+            <select id="dificuldade">
+                <option value="moleza">Moleza — HTML e CSS</option>
+                <option value="desafio">Desafio — com JavaScript</option>
+            </select>
+
+            <button type="button" id="botao-sortear">
+                Sortear desafio
+            </button>
+        </div>
+
+        <!-- Esse conteudo sera substituido quando acontecer o sorteio -->
+        <dialog id="resultado" aria-labelledby="nome-desafio">
+            <button type="button" id="fechar-resultado" aria-label="Fechar resultado">
+                &times;
+            </button>
+
+            <img id="imagem-desafio" alt="" hidden>
+
+            <h2 id="nome-desafio">Seu desafio</h2>
+
+            <p id="descricao-desafio"></p>
+            <h3 id="titulo-requisitos" hidden>O que construir</h3>
+
+            <ul id="requisitos-desafio"></ul>
+        </dialog>
+    </main>
+
+</body>
+
+</html>
